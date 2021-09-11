@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - CodeJava</title>
+    <script>
+    function submit(){
+       let name = document.getElementById("name").value;
+       let email = document.getElementById("email").value;
+       let password =  document.getElementById("password").value;
+       var obj = new Object();
+       obj.name = name;
+       obj.email  = email;
+       obj.password = password;
+       var jsonString= JSON.stringify(obj);
+       var xmlhttp = new XMLHttpRequest();
+       xmlhttp.open("POST", "/api/v1/user");
+       xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+       xmlhttp.send(jsonString);
+
+       console.log(password);
+    }
+
+</script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h1>User Registration - Sign Up</h1>
+    </div>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">First Name: </label>
+                <div class="col-8">
+                    <input type="text" id="name" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">E-mail: </label>
+                <div class="col-8">
+                    <input type="email" id="email" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                    <input type="password" id="password" class="form-control"
+                           required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary" onclick="submit()">Sign Up</button>
+            </div>
+        </div>
+</div>
+</body>
+</html>
